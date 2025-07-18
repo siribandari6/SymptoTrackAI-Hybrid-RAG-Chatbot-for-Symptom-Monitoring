@@ -1,8 +1,3 @@
-Here's a *concise and professional version* of the README.md for your *SymptoTrackAI* project, retaining all essential information while reducing length and repetition:
-
----
-
-`markdown
 # 🤖 SymptoTrackAI: Hybrid RAG Chatbot for Symptom Monitoring
 
 SymptoTrackAI is an AI-powered Django web application that uses a **Hybrid Retrieval-Augmented Generation (RAG)** model to provide symptom-based health advice. It combines FAISS vector search with transformer models for accurate predictions based on user-input symptoms.
