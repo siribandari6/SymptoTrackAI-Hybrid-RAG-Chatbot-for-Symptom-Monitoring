@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: symptotrack-app
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount the app directory for development (hot reload)
+      - .:/app
+      # Persist database
+      - ./db.sqlite3:/app/db.sqlite3
+      # Persist model files
+      - ./model:/app/model
+      # Persist dataset
+      - ./Dataset:/app/Dataset
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DEBUG=1
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:8000 --noreload
+  # Optional: Add MySQL/PostgreSQL database service if needed
+  # db:
+  #   image: mysql:8.0
+  #   container_name: symptotrack-db
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: rootpassword
+  #     MYSQL_DATABASE: symptotrack
+  #     MYSQL_USER: symptouser
+  #     MYSQL_PASSWORD: password
+  #   ports:
+  #     - "3306:3306"
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  #   restart: unless-stopped
+
+  # volumes:
+  #   mysql_data:
